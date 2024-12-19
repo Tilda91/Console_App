@@ -35,8 +35,23 @@ namespace MainApp
                     case "B":
                         
                         Console.Clear();
-                        var nyKontakt = kontaktService.SkapaKontakt();
-                        kontakter.Add(nyKontakt);
+                        /*var nyKontakt = kontaktService.SkapaKontakt();*/
+                        var kontakt = new KontaktModel
+                        {
+                            Förnamn = LäsaInData("Förnamn"),
+                            Efternamn = LäsaInData("Efternamn"),
+                            Email = LäsaInData("E-mail"),
+                            Telefonnummer = LäsaInData("Telefonnummer"),
+                            Gatuadress = LäsaInData("Gatuadress"),
+                            Postnummer = LäsaInData("Postnummer"),
+                            Ort = LäsaInData("Ort")
+                        };
+
+                        Console.WriteLine("KOntaken har sparats till listan.");
+                        Console.WriteLine("\nTryck på valfri tangent för att återgå till menyn.");
+                        Console.ReadKey();
+
+                        kontakter.Add(kontakt);
                         kontaktService.SparaKontakter(kontakter);
 
                         break;
@@ -70,5 +85,14 @@ namespace MainApp
             Console.WriteLine("\nTryck på valfri tangent för att återgå till menyn.");
             Console.ReadKey();
         }
+
+        private static string LäsaInData(string fält)
+        {
+            Console.Clear();
+            Console.Write($"Ange {fält}: ");
+            return Console.ReadLine();
+        }
     }
 }
+
+

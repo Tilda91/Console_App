@@ -12,6 +12,10 @@ namespace Business.Services
     {
         private readonly string _filePath;
 
+        public FileService()
+        {
+        }
+
         public FileService(string filePath)
         {
             _filePath = filePath;
